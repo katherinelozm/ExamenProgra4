@@ -1,0 +1,41 @@
+<div ng-controller="GiftsController">
+    <table class="table table-striped" class="table-fill">
+      <tr>
+        <th class="text-left">
+          Nombre
+        </th>
+        <th class="text-left">
+          Descripción
+        </th>
+        <th class="text-left">
+          Peso
+        </th>
+        <th class="text-left">
+          Destinatario
+        </th>
+        <th class="text-left">
+          Estado
+        </th>
+      </tr>
+      <tr ng-repeat="gift in gifts" class="table-hover">
+        <td class="text-left">
+          {{gift.name}}
+        </td>
+        <td class="text-left">
+          {{gift.description}}
+        </td>
+        <td class="text-left">
+          {{gift.weight}}
+        </td>
+        <td class="text-left">
+          {{gift.destination}}
+        </td>
+        <td class="text-left">
+          {{gift.status}}
+        </td>
+        <td class="text-left">
+          <p ng-click="">Cambiar Estado</p>
+        </td>
+      </tr>
+    </table>
+</div>

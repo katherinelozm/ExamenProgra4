@@ -1,33 +1,34 @@
-angular.module('AngularScaffold.Controllers')
-  .controller('HomeController', ['$scope', 'HomeService', '$sessionStorage', function ($scope, HomeService, $sessionStorage) {
-    	$scope.title = "Tabla de estudiantes de programamción 4."
-      $scope.exampleObject = {text: "Hola, Mundo"}
-      $scope.students = [];
-      $scope.student = {};
+angular.module('SantaClaus.Controllers')
+  .controller('HomeController', ['AuthService', '$scope', '$rootScope', '$sessionStorage',  function (authService, $scope, $rootScope, $sessionStorage) {
+      $scope.user = {};
+      $scope.$sessionStorage = $sessionStorage;
 
-      $scope.getStudents = function(){
-        HomeService.GetStudents().then(function(response){
-          $scope.students = response.data;
+      $scope.logout = function(){
+        authService.Logout().then(function(response){
+          alert('logged out correctly');
+          $sessionStorage.$reset();
         }).catch(function(err){
-          alert(err.data.error + " " + err.data.message)
-        });
+          alert(err.data.error + " " + err.data.message);
+        })
       }
 
-      $scope.postStudents = function(){
-        HomeService.PostStudents($scope.student).then(function(response){
-          alert("Posted to /students");
-          $scope.getStudents();
+      $scope.login = function(user){
+        authService.Login(user).then(function(response){
+          $sessionStorage.currentUser = response.data;
+          $scope.user = {};
         }).catch(function(err){
           alert(err.data.error + " " + err.data.message);
         });
       }
 
-      $scope.isAdmin = function(){
-        return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('admin') > -1;
+      $scope.register = function(){
+        var user = {username: $scope.user.username, password:  $scope.user.password, scope: ['admin']};
+        authService.Register(user).then(function(response){
+          alert('Registered in correctly!');
+          $scope.login({username: user.username, password: user.password});
+        }).catch(function(err){
+          console.log(err);
+          alert(err.data.error + " " + err.data.message);
+        })
       }
-
-      $scope.isRegular = function(){
-        return $sessionStorage.currentUser && $sessionStorage.currentUser.scope.indexOf('regular') > -1;
-      }
-
   }]);
