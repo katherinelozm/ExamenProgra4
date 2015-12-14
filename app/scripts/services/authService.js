@@ -1,7 +1,7 @@
-angular.module('AngularScaffold.Services').factory('AuthService', ['$http',
+angular.module('SantaClaus.Services').factory('AuthService', ['$http',
 	function($http){
 		$http.defaults.withCredentials = true;
-		var baseUrl = 'https://angular-scaffold-backend.herokuapp.com/';
+		var baseUrl = 'http://Katherines-MacBook-Pro.local:8000';
 		return {
 				Logout: function(){
 					return $http.get(baseUrl + "v1/logout");
@@ -9,8 +9,8 @@ angular.module('AngularScaffold.Services').factory('AuthService', ['$http',
 				Login: function(payload){
 					return $http.post(baseUrl + "v1/login", payload);
 				},
-        Register: function(payload){
-          return $http.post(baseUrl + "v1/register", payload);
-        }
+		        Register: function(payload){
+		          return $http.post(baseUrl + "v1/register", payload);
+		        }
 	    };
 }]);

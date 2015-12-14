@@ -1,10 +1,9 @@
 <div ng-controller="GiftsController">
-    <div>
-      <ul class="list-inline">
-        <li><a ng-click="">Agregar regalos</a></li>
-        <li><a ng-click="">Modificar regalos</a></li>
-        <li><a ng-click="">Ver regalos no entregados</a></li>
-        <li><a ng-click="">Ver regalos entregados</a></li>
-      </ul>
-    </div>
+    <ul class="list-inline">
+        <li><a ng-click="AddGifts()">Agregar regalos</a></li>
+        <li><a ng-click="EditGifts()">Modificar regalos</a></li>
+        <li><a ng-click="ViewPendingGifts()">Ver regalos no entregados</a></li>
+        <li><a ng-click="ViewDeliveredGifts()">Ver regalos entregados</a></li>
+    </ul>
+    <div ui-view></div>
 </div>

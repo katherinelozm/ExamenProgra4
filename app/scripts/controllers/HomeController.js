@@ -16,6 +16,7 @@ angular.module('SantaClaus.Controllers')
         authService.Login(user).then(function(response){
           $sessionStorage.currentUser = response.data;
           $scope.user = {};
+          $state.go('home')
         }).catch(function(err){
           alert(err.data.error + " " + err.data.message);
         });
@@ -30,5 +31,9 @@ angular.module('SantaClaus.Controllers')
           console.log(err);
           alert(err.data.error + " " + err.data.message);
         })
+      }
+
+      $scope.Home = function(){
+        $state.go('home')
       }
   }]);
