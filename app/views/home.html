@@ -1,9 +1,46 @@
 <div ng-controller="GiftsController">
-    <ul class="list-inline">
-        <li><a ng-click="AddGifts()">Agregar regalos</a></li>
-        <li><a ng-click="EditGifts()">Modificar regalos</a></li>
-        <li><a ng-click="ViewPendingGifts()">Ver regalos no entregados</a></li>
-        <li><a ng-click="ViewDeliveredGifts()">Ver regalos entregados</a></li>
-    </ul>
-    <div ui-view></div>
+    <div>
+      <input type="text" placeholder="name" ng-model="gift.name">
+      <input type="text" placeholder="description" ng-model="gift.description">
+      <input type="text" placeholder="weight" ng-model="gift.weight">
+      <input type="text" placeholder="destination" ng-model="gift.destination">
+      <button type="submit" class="btn btn-default" ng-click="postGifts()">Agregar</button>
+    </div>
+    <br>
+    <table class="table table-striped" class="table-fill">
+      <tr>
+        <th class="text-left">
+          Nombre
+        </th>
+        <th class="text-left">
+          Descripción
+        </th>
+        <th class="text-left">
+          Peso
+        </th>
+        <th class="text-left">
+          Destinatario
+        </th>
+        <th class="text-left">
+          Estado
+        </th>
+      </tr>
+      <tr ng-repeat="gift in gifts" class="table-hover">
+        <td class="text-left">
+          {{gift.name}}
+        </td>
+        <td class="text-left">
+          {{gift.description}}
+        </td>
+        <td class="text-left">
+          {{gift.weight}}
+        </td>
+        <td class="text-left">
+          {{gift.destination}}
+        </td>
+        <td class="text-left">
+          {{gift.status}}
+        </td>
+      </tr>
+    </table>
 </div>

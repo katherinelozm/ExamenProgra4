@@ -1,7 +1,7 @@
 angular.module('SantaClaus.Services').factory('AuthService', ['$http',
 	function($http){
 		$http.defaults.withCredentials = true;
-		var baseUrl = 'http://Katherines-MacBook-Pro.local:8000';
+		var baseUrl = 'katherine-lozano-backend.herokuapp.com';
 		return {
 				Logout: function(){
 					return $http.get(baseUrl + "v1/logout");
